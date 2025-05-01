@@ -14,8 +14,8 @@ import random
 import tensorflow as tf
 from torch.utils.data import DataLoader, TensorDataset
 from typing import List, Dict, Optional 
-import utils.settings as s
-from utils.generate import generate
+import app.utils.settings as s
+from app.utils.generate import generate
 
 
 old_args = s.configure_args()
