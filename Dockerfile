@@ -1,10 +1,7 @@
-FROM python:3.10-slim
+FROM python:latest
 
 # Set the working directory inside the container
 WORKDIR /app
-
-# Install pip and dependencies
-RUN pip install --upgrade pip
 
 # Copy the requirements.txt into the container
 COPY requirements.txt .
