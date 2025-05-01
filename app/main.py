@@ -74,9 +74,9 @@ def inference(input_data: InputDataWaveform):
     return output
 
 
-if __name__ == "__main__":
-    config = uvicorn.Config(
-        "main:app", port=53053, log_level="info", host="0.0.0.0"
-    )
-    server = uvicorn.Server(config)
-    server.run()
+# if __name__ == "__main__":
+#     config = uvicorn.Config(
+#         "main:app", port=53053, log_level="info", host="0.0.0.0"
+#     )
+#     server = uvicorn.Server(config)
+#     server.run()
