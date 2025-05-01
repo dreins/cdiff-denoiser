@@ -7,10 +7,13 @@ WORKDIR /code
 COPY environment.yaml /code/environment.yaml
 COPY ./app /code/app
 
+# # Clean conda cache (optional but useful)
+# RUN conda clean --all
+
 # Create conda environment
 RUN conda env create -f /code/environment.yaml
 
-# Use bash as shell to activate conda env
+# Use conda run to activate the environment for subsequent commands
 SHELL ["conda", "run", "-n", "cold-diffusion", "/bin/bash", "-c"]
 
 # Run FastAPI with uvicorn
