@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  cold-diffusion-app:
+    build: .
+    container_name: cold-diffusion-api
+    ports:
+      - "53053:53053"
+    volumes:
+      - .:/code
+    command: ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "53053"]
+    environment:
+      - CONDA_DEFAULT_ENV=cold-diffusion
+      - CONDA_PREFIX=/opt/conda/envs/cold-diffusion
