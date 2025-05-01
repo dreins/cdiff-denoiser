@@ -47,4 +47,4 @@ pillow==10.2.0
 pip==23.3.1
 platformdirs==3.10.0
 python-dotenv==1.0.0
-uvicorn
+uvicorn==0.22.0
