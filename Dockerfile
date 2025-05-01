@@ -3,6 +3,8 @@ FROM python:3.8-slim
 # Set the working directory
 WORKDIR /app
 
+COPY . /app/
+
 # Install system dependencies (if any)
 RUN apt-get update && apt-get install -y build-essential
 
@@ -10,13 +12,7 @@ RUN apt-get update && apt-get install -y build-essential
 COPY requirements.txt /app/
 
 # Install the Python dependencies
-RUN pip install --no-cache-dir --upgrade -r requirements.txt
-
-# Debug step: Ensure `uvicorn` is installed
-RUN which uvicorn || echo "Uvicorn not found"
-
-# Copy the rest of the application code
-COPY . /app/
+RUN pip install --upgrade -r requirements.txt
 
 # Expose the port
 EXPOSE 53053
