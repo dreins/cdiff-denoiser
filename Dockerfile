@@ -10,7 +10,7 @@ RUN pip install --upgrade pip
 COPY requirements.txt .
 
 # Install dependencies
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip freeze > requirements.txt
 
 # Copy the application code into the container
 COPY . .
