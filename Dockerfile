@@ -10,7 +10,8 @@ RUN pip install --upgrade pip
 COPY requirements.txt .
 
 # Install dependencies
-RUN pip freeze > requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install fastapi uvicorn
 
 # Copy the application code into the container
 COPY . .
