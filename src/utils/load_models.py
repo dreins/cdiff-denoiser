@@ -3,10 +3,10 @@ from tqdm.auto import tqdm
 import wandb
 import torch.nn.functional as F
 import pdb
-from app.utils.scheduler import *
+from src.utils.scheduler import *
 from torch.optim import Adam
 import torch.optim.lr_scheduler as lr_scheduler
-from app.utils.model import Unet1D
+from src.utils.model import Unet1D
 
 ### Model Parameters 
 

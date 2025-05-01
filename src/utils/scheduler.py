@@ -1,6 +1,6 @@
 import torch 
 import torch.nn.functional as F
-import app.utils.settings as s
+import src.utils.settings as s
 
 
 old_args = s.configure_args()
