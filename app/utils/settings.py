@@ -24,7 +24,7 @@ def configure_args():
                         help="Range RNF as a tuple of two integers (min, max). Example: --Range_RNF 10, 20")
 
     parser.add_argument("--path_model",
-                        default="~/cdiff-denoiser/models/model_best_3",
+                        default="~/cdiff-denoiser/models/model_best_4.pt",
                         type=str,
                         help="Path to the model weights (default: full path)")
 

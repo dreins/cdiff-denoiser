@@ -2,10 +2,10 @@ import torch
 from tqdm.auto import tqdm
 import torch.nn.functional as F
 import pdb
-from utils.scheduler import *
+from app.utils.scheduler import *
 from torch.optim import Adam
 import torch.optim.lr_scheduler as lr_scheduler
-import utils.scheduler as scheduler
+import app.utils.scheduler as scheduler
 import os
 import tensorflow as tf
 import random
@@ -13,8 +13,8 @@ import numpy as np
 import pandas as pd
 from tqdm import tqdm
 import json
-import utils.settings as s
-from utils.load_models import load_model_and_weights
+import app.utils.settings as s
+from app.utils.load_models import load_model_and_weights
 
 
 old_args = s.configure_args()

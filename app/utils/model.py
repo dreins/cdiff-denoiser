@@ -12,12 +12,6 @@ from torch.cuda.amp import autocast
 from torch.optim import Adam
 from torch.utils.data import Dataset, DataLoader
 
-from einops import rearrange, reduce
-from einops.layers.torch import Rearrange
-
-from accelerate import Accelerator
-from ema_pytorch import EMA
-
 from tqdm.auto import tqdm
 
 # constants
