@@ -1,20 +1,25 @@
-FROM python:latest
+FROM python:3.8-slim
 
-# Set the working directory inside the container
+# Set the working directory
 WORKDIR /app
 
-# Copy the requirements.txt into the container
-COPY requirements.txt .
+# Install system dependencies (if any)
+RUN apt-get update && apt-get install -y build-essential
 
-# Install dependencies
+# Copy the requirements.txt
+COPY requirements.txt /app/
+
+# Install the Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
-RUN pip install fastapi uvicorn
 
-# Copy the application code into the container
-COPY . .
+# Debug step: Ensure `uvicorn` is installed
+RUN which uvicorn || echo "Uvicorn not found"
 
-# Expose the port for the app
+# Copy the rest of the application code
+COPY . /app/
+
+# Expose the port
 EXPOSE 53053
 
-# Command to run the app using uvicorn
+# Set the command to run the application
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "53053"]
