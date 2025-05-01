@@ -8,4 +8,4 @@ services:
       - .:/app  # This ensures the code is up to date inside the container
     environment:
       - PYTHONUNBUFFERED=1  # Optional: prevent output buffering (useful for logs)
-    command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "53053"]
+    command: ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "53053"]

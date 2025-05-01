@@ -18,4 +18,4 @@ RUN pip install --upgrade -r requirements.txt
 EXPOSE 53053
 
 # Set the command to run the application
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "53053"]
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "53053"]

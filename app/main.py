@@ -4,8 +4,8 @@ import uvicorn
 from dotenv import load_dotenv
 import os
 from fastapi.middleware.cors import CORSMiddleware
-from .utils.pydantic import *
-from .utils.helper import create_inference_dataloader, generate_noise_dataframe, validate_trace_lengths
+from app.utils.pydantic import *
+from app.utils.helper import create_inference_dataloader, generate_noise_dataframe, validate_trace_lengths
 import pandas as pd
 import numpy as np
 import json
@@ -14,8 +14,8 @@ import random
 import tensorflow as tf
 from torch.utils.data import DataLoader, TensorDataset
 from typing import List, Dict, Optional 
-import .utils.settings as s
-from .utils.generate import generate
+import app.utils.settings as s
+from app.utils.generate import generate
 
 
 old_args = s.configure_args()
