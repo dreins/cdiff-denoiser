@@ -1,20 +1,32 @@
-FROM continuumio/miniconda3
+# Use the official Python image as the base image
+FROM python:3.11-slim
 
-# Set working directory
-WORKDIR /code
+# Set environment variables to ensure non-interactive installation of packages
+ENV PYTHONUNBUFFERED 1
+ENV PIP_NO_CACHE_DIR=off
 
-# Copy environment file and app
-COPY environment.yaml /code/environment.yaml
-COPY ./app /code/app
+# Install system dependencies (if needed)
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    libssl-dev \
+    libffi-dev \
+    python3-dev \
+    && rm -rf /var/lib/apt/lists/*
 
-# # Clean conda cache (optional but useful)
-# RUN conda clean --all
+# Set the working directory inside the container
+WORKDIR /app
 
-# Create conda environment
-RUN conda env create -f /code/environment.yaml
+# Copy the requirements.txt into the container
+COPY requirements.txt .
 
-# Use conda run to activate the environment for subsequent commands
-SHELL ["conda", "run", "-n", "cold-diffusion", "/bin/bash", "-c"]
+# Install the Python dependencies from the requirements.txt
+RUN pip install -r requirements.txt
 
-# Run FastAPI with uvicorn
+# Copy the application code into the container
+COPY . /app/
+
+# Expose the port the app will run on
+EXPOSE 53053
+
+# Run the FastAPI app with Uvicorn
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "53053"]

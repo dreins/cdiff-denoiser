@@ -4,8 +4,8 @@ import uvicorn
 from dotenv import load_dotenv
 import os
 from fastapi.middleware.cors import CORSMiddleware
-from utils.pydantic import InputDataWaveform, OutputDataWaveform, OutputTraceResult, InputSeismicTrace
-from utils.helper import create_inference_dataloader, generate_noise_dataframe, validate_trace_lengths
+from .utils.pydantic import *
+from .utils.helper import create_inference_dataloader, generate_noise_dataframe, validate_trace_lengths
 import pandas as pd
 import numpy as np
 import json
