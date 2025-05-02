@@ -1,9 +1,9 @@
 FROM python:3.8-slim
 
 # Set the working directory
-WORKDIR /app
+WORKDIR /src
 
-COPY . /app/
+COPY . /src/
 
 # Install system dependencies (if any)
 RUN apt-get update && apt-get install -y build-essential

@@ -17,6 +17,11 @@ from typing import List, Dict, Optional
 import src.utils.settings as s
 from src.utils.generate import generate
 
+import logging
+
+logging.basicConfig(level=logging.INFO) 
+logger = logging.getLogger(__name__)
+
 
 old_args = s.configure_args()
 
