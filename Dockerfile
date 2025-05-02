@@ -9,7 +9,7 @@ COPY . /src/
 RUN apt-get update && apt-get install -y build-essential
 
 # Copy the requirements.txt
-COPY requirements.txt /app/
+COPY requirements.txt /src/
 
 # Install the Python dependencies
 RUN pip install --upgrade -r requirements.txt
