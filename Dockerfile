@@ -9,6 +9,7 @@ COPY . .
 
 # Add a check to verify the file is present
 RUN ls /app
+RUN cd /src
 
 EXPOSE 53053
 
