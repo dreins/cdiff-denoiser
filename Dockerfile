@@ -7,10 +7,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-# Add a check to verify the file is present
-RUN ls /app
-RUN cd /src
-
 EXPOSE 53053
 
 # Run the FastAPI app using uvicorn
