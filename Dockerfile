@@ -1,13 +1,16 @@
-FROM python:3.10
 
-WORKDIR /app
+FROM tiangolo/uvicorn-gunicorn-fastapi:python3.7
 
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+WORKDIR /code
 
-COPY . .
 
-EXPOSE 53053
+COPY ./requirements.txt /code/requirements.txt
 
-# Run the FastAPI app using uvicorn
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "53053"]
+
+RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
+
+
+COPY ./app /code/app
+
+
+CMD ["fastapi", "run", "app/main.py", "--port", "53053"]

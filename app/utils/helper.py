@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import torch
 from torch.utils.data import DataLoader, TensorDataset
-import src.utils.settings as s
+import app.utils.settings as s
 import random
 
 
