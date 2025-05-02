@@ -1,16 +1,15 @@
 FROM python:3.10
 
-# Set the working directory
 WORKDIR /app
 
-# Copy the requirements and install dependencies
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the entire project to the container
 COPY . .
 
-# Expose the port for the app
+# Add a check to verify the file is present
+RUN ls /app
+
 EXPOSE 53053
 
 # Run the FastAPI app using uvicorn

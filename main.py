@@ -1,19 +1,9 @@
-from fastapi import FastAPI, BackgroundTasks
-from obspy import UTCDateTime
-import uvicorn
+from fastapi import FastAPI
 from dotenv import load_dotenv
-import os
 from fastapi.middleware.cors import CORSMiddleware
 from src.utils.pydantic import *
 from src.utils.helper import create_inference_dataloader, generate_noise_dataframe, validate_trace_lengths
 import pandas as pd
-import numpy as np
-import json
-import h5py
-import random
-import tensorflow as tf
-from torch.utils.data import DataLoader, TensorDataset
-from typing import List, Dict, Optional 
 import src.utils.settings as s
 from src.utils.generate import generate
 
