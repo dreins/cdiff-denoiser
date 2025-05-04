@@ -7,8 +7,11 @@ services:
     container_name: cold-diffusion-api
     ports:
       - "53053:53053"
-    env_file:
-      - .env
+    environment:
+      - T=${T}
+      - GPU=${GPU}
+      - RANGE_NRF=${RANGE_NRF}
+      - MODEL_PATH=${MODEL_PATH}
     volumes:
       - .:/code  # Ensure the correct mapping to /code instead of /app
     command: ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "53053"]
