@@ -5,7 +5,7 @@ services:
       dockerfile: Dockerfile
     container_name: cold-diffusion-api
     env_file:
-      - fileName
+      - stack.env
     ports:
       - "53053:53053"
     environment:
