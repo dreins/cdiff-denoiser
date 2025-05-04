@@ -1,19 +1,21 @@
-FROM python:3.9
+FROM python:3.9-slim-buster
 
-# Install Python 3
-RUN apt-get update
-RUN apt-get  install -y python3
-RUN apt-get install -y python3-pip
-RUN apt-get install -y git
+# Install system dependencies (less is usually better in Docker)
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
 
-# Install Create Python alias for python3
-RUN echo 'alias python=python3' >> ~/.bashrc
-RUN echo 'alias pip=pip3' >> ~/.bashrc
+# Don't create aliases in the Dockerfile.  It's better to be explicit.
+# WORKDIR /app  # Correct WORKDIR is set later, so don't set it here.
 
-
+# Copy requirements first to leverage Docker cache
+COPY requirements.txt /app/requirements.txt
 WORKDIR /app
+RUN pip install --no-cache-dir -r requirements.txt # Install requirements
 COPY . /app
-RUN pip install -r requirements.txt
+
 RUN which python
 RUN which pip
 RUN which uvicorn
+
+# Explicitly use the uvicorn executable.  This is the most robust approach.
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "53053"]
