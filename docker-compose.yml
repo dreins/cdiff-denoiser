@@ -8,8 +8,7 @@ services:
       - stack.env
     ports:
       - "53053:53053"
-    working_dir: /app 
-    entrypoint: []    
+    working_dir: /app
     environment:
       - T=${T}
       - GPU=${GPU}
