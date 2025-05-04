@@ -1,0 +1,505 @@
+{
+    "AppArmorProfile": "docker-default",
+    "Args": [
+        "app.main:app",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "53053"
+    ],
+    "Config": {
+        "AttachStderr": true,
+        "AttachStdin": false,
+        "AttachStdout": true,
+        "Cmd": [
+            "uvicorn",
+            "app.main:app",
+            "--host",
+            "0.0.0.0",
+            "--port",
+            "53053"
+        ],
+        "Domainname": "",
+        "Entrypoint": null,
+        "Env": [
+            "T=300",
+            "GPU=0",
+            "RANGE_RNF=40,65",
+            "MODEL_PATH=~/cdiff-denoiser/models/model_best_4.pt",
+            "PATH=/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+            "LANG=C.UTF-8",
+            "GPG_KEY=E3FF2839C048B25C084DEBE9B26995E310250568",
+            "PYTHON_VERSION=3.8.20"
+        ],
+        "ExposedPorts": {
+            "53053/tcp": {}
+        },
+        "Hostname": "b959f94c6b65",
+        "Image": "cdiff-denoiser-cold-diffusion-api",
+        "Labels": {
+            "com.docker.compose.config-hash": "bc1665f15dda94cf0717842a6eddf5e84ecd89597312e3095981b55befed3a85",
+            "com.docker.compose.container-number": "1",
+            "com.docker.compose.depends_on": "",
+            "com.docker.compose.image": "sha256:b449c579c63456942294ee436f2cd9b3e613b0bfbcc864a69ad04217887ad0da",
+            "com.docker.compose.oneoff": "False",
+            "com.docker.compose.project": "cdiff-denoiser",
+            "com.docker.compose.project.config_files": "/data/compose/480/c78ca9ab519d7735aa594a9951837fd8fb8f8552/docker-compose.yml",
+            "com.docker.compose.project.environment_file": "/data/compose/480/c78ca9ab519d7735aa594a9951837fd8fb8f8552/stack.env",
+            "com.docker.compose.project.working_dir": "/data/compose/480/c78ca9ab519d7735aa594a9951837fd8fb8f8552",
+            "com.docker.compose.replace": "d5e65eaf18448d06ac35f9d7ccb716c4c7911011eb96a3e0ddd3c897e1eafc05",
+            "com.docker.compose.service": "cold-diffusion-api",
+            "com.docker.compose.version": "2.29.2"
+        },
+        "OnBuild": null,
+        "OpenStdin": false,
+        "StdinOnce": false,
+        "Tty": false,
+        "User": "",
+        "Volumes": null,
+        "WorkingDir": "/app"
+    },
+    "Created": "2025-05-04T10:29:27.399847376Z",
+    "Driver": "overlay2",
+    "ExecIDs": null,
+    "GraphDriver": {
+        "Data": {
+            "LowerDir": "/home/docker-images/overlay2/a23f8c960e2a85a5be29090110bfaecf249f8afe7e02cb1b1fb854fd99011759-init/diff:/home/docker-images/overlay2/t1m86ikoa1eb6sd440b3yho2o/diff:/home/docker-images/overlay2/s2lwwdzwqlncp72u6jtl2vr0g/diff:/home/docker-images/overlay2/s1gwmnrmz9p2nsy07qfejdc6h/diff:/home/docker-images/overlay2/3ms220u76ngxm2icltwt4zq12/diff:/home/docker-images/overlay2/fqggisg4axwhllkqcdbgixxjf/diff:/home/docker-images/overlay2/753476f20bf454968e4502769b7c4f9cde925027e7d4b013a2aafcb57731f91a/diff:/home/docker-images/overlay2/901e8939a16702eaaf85dcf4230de70f10fa7d00c770a742e2b9dc947a62571c/diff:/home/docker-images/overlay2/fc8cf1c3b21809023cc6594e8cf8c61ad12f19a8d0cb2930ce5063f818ed1704/diff:/home/docker-images/overlay2/8f190b87618de4f4817c78d63a238dc67fe45ff9ab141ff8d75ee5fe9216d8a7/diff",
+            "MergedDir": "/home/docker-images/overlay2/a23f8c960e2a85a5be29090110bfaecf249f8afe7e02cb1b1fb854fd99011759/merged",
+            "UpperDir": "/home/docker-images/overlay2/a23f8c960e2a85a5be29090110bfaecf249f8afe7e02cb1b1fb854fd99011759/diff",
+            "WorkDir": "/home/docker-images/overlay2/a23f8c960e2a85a5be29090110bfaecf249f8afe7e02cb1b1fb854fd99011759/work"
+        },
+        "Name": "overlay2"
+    },
+    "HostConfig": {
+        "AutoRemove": false,
+        "Binds": null,
+        "BlkioDeviceReadBps": null,
+        "BlkioDeviceReadIOps": null,
+        "BlkioDeviceWriteBps": null,
+        "BlkioDeviceWriteIOps": null,
+        "BlkioWeight": 0,
+        "BlkioWeightDevice": null,
+        "CapAdd": null,
+        "CapDrop": null,
+        "Cgroup": "",
+        "CgroupParent": "",
+        "CgroupnsMode": "private",
+        "ConsoleSize": [
+            0,
+            0
+        ],
+        "ContainerIDFile": "",
+        "CpuCount": 0,
+        "CpuPercent": 0,
+        "CpuPeriod": 0,
+        "CpuQuota": 0,
+        "CpuRealtimePeriod": 0,
+        "CpuRealtimeRuntime": 0,
+        "CpuShares": 0,
+        "CpusetCpus": "",
+        "CpusetMems": "",
+        "DeviceCgroupRules": null,
+        "DeviceRequests": null,
+        "Devices": null,
+        "Dns": null,
+        "DnsOptions": null,
+        "DnsSearch": null,
+        "ExtraHosts": [],
+        "GroupAdd": null,
+        "IOMaximumBandwidth": 0,
+        "IOMaximumIOps": 0,
+        "IpcMode": "private",
+        "Isolation": "",
+        "Links": null,
+        "LogConfig": {
+            "Config": {},
+            "Type": "json-file"
+        },
+        "MaskedPaths": [
+            "/proc/asound",
+            "/proc/acpi",
+            "/proc/kcore",
+            "/proc/keys",
+            "/proc/latency_stats",
+            "/proc/timer_list",
+            "/proc/timer_stats",
+            "/proc/sched_debug",
+            "/proc/scsi",
+            "/sys/firmware",
+            "/sys/devices/virtual/powercap"
+        ],
+        "Memory": 0,
+        "MemoryReservation": 0,
+        "MemorySwap": 0,
+        "MemorySwappiness": null,
+        "NanoCpus": 0,
+        "NetworkMode": "2183f395a0a35bae57a42a4383be148c6a71b8fbcf7528fcd97a0187cbb9b14c",
+        "OomKillDisable": null,
+        "OomScoreAdj": 0,
+        "PidMode": "",
+        "PidsLimit": null,
+        "PortBindings": {
+            "53053/tcp": [
+                {
+                    "HostIp": "",
+                    "HostPort": "53053"
+                }
+            ]
+        },
+        "Privileged": false,
+        "PublishAllPorts": false,
+        "ReadonlyPaths": [
+            "/proc/bus",
+            "/proc/fs",
+            "/proc/irq",
+            "/proc/sys",
+            "/proc/sysrq-trigger"
+        ],
+        "ReadonlyRootfs": false,
+        "RestartPolicy": {
+            "MaximumRetryCount": 0,
+            "Name": "no"
+        },
+        "Runtime": "runc",
+        "SecurityOpt": null,
+        "ShmSize": 67108864,
+        "UTSMode": "",
+        "Ulimits": null,
+        "UsernsMode": "",
+        "VolumeDriver": "",
+        "VolumesFrom": null
+    },
+    "HostnamePath": "/home/docker-images/containers/b959f94c6b65d233e6dbe75fb68fc352409d0be97e82fc9e62c8a7cd5fd5e4e9/hostname",
+    "HostsPath": "/home/docker-images/containers/b959f94c6b65d233e6dbe75fb68fc352409d0be97e82fc9e62c8a7cd5fd5e4e9/hosts",
+    "Id": "b959f94c6b65d233e6dbe75fb68fc352409d0be97e82fc9e62c8a7cd5fd5e4e9",
+    "Image": "sha256:b449c579c63456942294ee436f2cd9b3e613b0bfbcc864a69ad04217887ad0da",
+    "LogPath": "/home/docker-images/containers/b959f94c6b65d233e6dbe75fb68fc352409d0be97e82fc9e62c8a7cd5fd5e4e9/b959f94c6b65d233e6dbe75fb68fc352409d0be97e82fc9e62c8a7cd5fd5e4e9-json.log",
+    "MountLabel": "",
+    "Mounts": [],
+    "Name": "/cold-diffusion-api",
+    "NetworkSettings": {
+        "Bridge": "",
+        "EndpointID": "",
+        "Gateway": "",
+        "GlobalIPv6Address": "",
+        "GlobalIPv6PrefixLen": 0,
+        "HairpinMode": false,
+        "IPAddress": "",
+        "IPPrefixLen": 0,
+        "IPv6Gateway": "",
+        "LinkLocalIPv6Address": "",
+        "LinkLocalIPv6PrefixLen": 0,
+        "MacAddress": "",
+        "Networks": {
+            "nginx-manager_customnetwork": {
+                "Aliases": [
+                    "cold-diffusion-api",
+                    "b959f94c6b65"
+                ],
+                "DNSNames": [
+                    "cold-diffusion-api",
+                    "b959f94c6b65"
+                ],
+                "DriverOpts": null,
+                "EndpointID": "",
+                "Gateway": "",
+                "GlobalIPv6Address": "",
+                "GlobalIPv6PrefixLen": 0,
+                "IPAMConfig": null,
+                "IPAddress": "",
+                "IPPrefixLen": 0,
+                "IPv6Gateway": "",
+                "Links": null,
+                "MacAddress": "",
+                "NetworkID": "2183f395a0a35bae57a42a4383be148c6a71b8fbcf7528fcd97a0187cbb9b14c"
+            }
+        },
+        "Ports": {},
+        "SandboxID": "",
+        "SandboxKey": "",
+        "SecondaryIPAddresses": null,
+        "SecondaryIPv6Addresses": null
+    },
+    "Path": "uvicorn",
+    "Platform": "linux",
+    "Portainer": {
+        "ResourceControl": {
+            "Id": 220,
+            "ResourceId": "1_cdiff-denoiser",
+            "SubResourceIds": [],
+            "Type": 6,
+            "UserAccesses": [],
+            "TeamAccesses": [],
+            "Public": true,
+            "AdministratorsOnly": false,
+            "System": false
+        }
+    },
+    "ProcessLabel": "",
+    "ResolvConfPath": "/home/docker-images/containers/b959f94c6b65d233e6dbe75fb68fc352409d0be97e82fc9e62c8a7cd5fd5e4e9/resolv.conf",
+    "RestartCount": 0,
+    "State": {
+        "Dead": false,
+        "Error": "",
+        "ExitCode": 2,
+        "FinishedAt": "2025-05-04T10:29:34.13198896Z",
+        "OOMKilled": false,
+        "Paused": false,
+        "Pid": 0,
+        "Restarting": false,
+        "Running": false,
+        "StartedAt": "2025-05-04T10:29:27.521215189Z",
+        "Status": "exited"
+    }
+}
+
+{
+	"Id": "3bbbf4fe06dbe399550938d985c2afb9d4cfcb920b210e19a410847370bd4e1c",
+	"Created": "2025-05-04T10:31:30.42029763Z",
+	"Path": "python",
+	"Args": [
+		"-m",
+		"uvicorn",
+		"app.main:app",
+		"--host",
+		"0.0.0.0",
+		"--port",
+		"53053"
+	],
+	"State": {
+		"Status": "running",
+		"Running": true,
+		"Paused": false,
+		"Restarting": false,
+		"OOMKilled": false,
+		"Dead": false,
+		"Pid": 1161,
+		"ExitCode": 0,
+		"Error": "",
+		"StartedAt": "2025-05-04T10:31:30.827561047Z",
+		"FinishedAt": "0001-01-01T00:00:00Z"
+	},
+	"Image": "sha256:afa36e314767c15fb5efff20628e43b99b07e9c8fefaf7cc9ff8beace72b58a7",
+	"ResolvConfPath": "/var/lib/docker/containers/3bbbf4fe06dbe399550938d985c2afb9d4cfcb920b210e19a410847370bd4e1c/resolv.conf",
+	"HostnamePath": "/var/lib/docker/containers/3bbbf4fe06dbe399550938d985c2afb9d4cfcb920b210e19a410847370bd4e1c/hostname",
+	"HostsPath": "/var/lib/docker/containers/3bbbf4fe06dbe399550938d985c2afb9d4cfcb920b210e19a410847370bd4e1c/hosts",
+	"LogPath": "/var/lib/docker/containers/3bbbf4fe06dbe399550938d985c2afb9d4cfcb920b210e19a410847370bd4e1c/3bbbf4fe06dbe399550938d985c2afb9d4cfcb920b210e19a410847370bd4e1c-json.log",
+	"Name": "/cold-diffusion-api",
+	"RestartCount": 0,
+	"Driver": "overlay2",
+	"Platform": "linux",
+	"MountLabel": "",
+	"ProcessLabel": "",
+	"AppArmorProfile": "",
+	"ExecIDs": [
+		"1f798723723485368a55ac11db834ffebb02e70b42c2a55dac76298f949417d4"
+	],
+	"HostConfig": {
+		"Binds": null,
+		"ContainerIDFile": "",
+		"LogConfig": {
+			"Type": "json-file",
+			"Config": {}
+		},
+		"NetworkMode": "cdiff-denoiser_default",
+		"PortBindings": {
+			"53053/tcp": [
+				{
+					"HostIp": "",
+					"HostPort": "53053"
+				}
+			]
+		},
+		"RestartPolicy": {
+			"Name": "",
+			"MaximumRetryCount": 0
+		},
+		"AutoRemove": false,
+		"VolumeDriver": "",
+		"VolumesFrom": null,
+		"ConsoleSize": [
+			0,
+			0
+		],
+		"CapAdd": null,
+		"CapDrop": null,
+		"CgroupnsMode": "private",
+		"Dns": null,
+		"DnsOptions": null,
+		"DnsSearch": null,
+		"ExtraHosts": [],
+		"GroupAdd": null,
+		"IpcMode": "private",
+		"Cgroup": "",
+		"Links": null,
+		"OomScoreAdj": 0,
+		"PidMode": "",
+		"Privileged": false,
+		"PublishAllPorts": false,
+		"ReadonlyRootfs": false,
+		"SecurityOpt": null,
+		"UTSMode": "",
+		"UsernsMode": "",
+		"ShmSize": 67108864,
+		"Runtime": "runc",
+		"Isolation": "",
+		"CpuShares": 0,
+		"Memory": 0,
+		"NanoCpus": 0,
+		"CgroupParent": "",
+		"BlkioWeight": 0,
+		"BlkioWeightDevice": null,
+		"BlkioDeviceReadBps": null,
+		"BlkioDeviceWriteBps": null,
+		"BlkioDeviceReadIOps": null,
+		"BlkioDeviceWriteIOps": null,
+		"CpuPeriod": 0,
+		"CpuQuota": 0,
+		"CpuRealtimePeriod": 0,
+		"CpuRealtimeRuntime": 0,
+		"CpusetCpus": "",
+		"CpusetMems": "",
+		"Devices": null,
+		"DeviceCgroupRules": null,
+		"DeviceRequests": null,
+		"MemoryReservation": 0,
+		"MemorySwap": 0,
+		"MemorySwappiness": null,
+		"OomKillDisable": null,
+		"PidsLimit": null,
+		"Ulimits": null,
+		"CpuCount": 0,
+		"CpuPercent": 0,
+		"IOMaximumIOps": 0,
+		"IOMaximumBandwidth": 0,
+		"MaskedPaths": [
+			"/proc/asound",
+			"/proc/acpi",
+			"/proc/kcore",
+			"/proc/keys",
+			"/proc/latency_stats",
+			"/proc/timer_list",
+			"/proc/timer_stats",
+			"/proc/sched_debug",
+			"/proc/scsi",
+			"/sys/firmware"
+		],
+		"ReadonlyPaths": [
+			"/proc/bus",
+			"/proc/fs",
+			"/proc/irq",
+			"/proc/sys",
+			"/proc/sysrq-trigger"
+		]
+	},
+	"GraphDriver": {
+		"Data": {
+			"LowerDir": "/var/lib/docker/overlay2/35993c14a873f1b556563b6c66fac5b4a13f557d09d5c34c9a8734bc3365af56-init/diff:/var/lib/docker/overlay2/m9tde8kwp0idkvhpbig6dz9wx/diff:/var/lib/docker/overlay2/wvh20la35cp95ni3vdbwexc7f/diff:/var/lib/docker/overlay2/fwwoeux9wkq3f0vxhzc0bpu3l/diff:/var/lib/docker/overlay2/9d96bb3e9df603812ab976bad881910238bd825e470063173d76b9010da80b89/diff:/var/lib/docker/overlay2/7e65884508f60880981c3a98867c5e94fbe606ffc74c12c4372c4c74f8410eb0/diff:/var/lib/docker/overlay2/58e2a6297190cc3fb7fc54d5fa6a4899e4ad8dc8b1cc32d4672a512dde0c5045/diff:/var/lib/docker/overlay2/bd4d08fb7fd0316bbad3fdba6918cd71942c3148a817cb3d467b62a01555c32c/diff:/var/lib/docker/overlay2/29662c5b835daa3462d793447fe1f0ee45eaff78656d0d41a7186038fa553459/diff:/var/lib/docker/overlay2/547adb53568c00fe4af2144a9b3636feaa45cae8d7e854a74c7687c1a49478bc/diff:/var/lib/docker/overlay2/1f21616181d39bca832a39cb0dfdbb01980ebe314187a91a5f183951924fa1a6/diff",
+			"MergedDir": "/var/lib/docker/overlay2/35993c14a873f1b556563b6c66fac5b4a13f557d09d5c34c9a8734bc3365af56/merged",
+			"UpperDir": "/var/lib/docker/overlay2/35993c14a873f1b556563b6c66fac5b4a13f557d09d5c34c9a8734bc3365af56/diff",
+			"WorkDir": "/var/lib/docker/overlay2/35993c14a873f1b556563b6c66fac5b4a13f557d09d5c34c9a8734bc3365af56/work"
+		},
+		"Name": "overlay2"
+	},
+	"Mounts": [],
+	"Config": {
+		"Hostname": "3bbbf4fe06db",
+		"Domainname": "",
+		"User": "",
+		"AttachStdin": false,
+		"AttachStdout": true,
+		"AttachStderr": true,
+		"ExposedPorts": {
+			"53053/tcp": {}
+		},
+		"Tty": false,
+		"OpenStdin": false,
+		"StdinOnce": false,
+		"Env": [
+			"GPU=0",
+			"RANGE_RNF=40,65",
+			"MODEL_PATH=~/cdiff-denoiser/models/model_best_4.pt",
+			"T=300",
+			"PATH=/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+			"LANG=C.UTF-8",
+			"GPG_KEY=E3FF2839C048B25C084DEBE9B26995E310250568",
+			"PYTHON_VERSION=3.9.22",
+			"PYTHON_SHA256=8c136d199d3637a1fce98a16adc809c1d83c922d02d41f3614b34f8b6e7d38ec"
+		],
+		"Cmd": [
+			"python",
+			"-m",
+			"uvicorn",
+			"app.main:app",
+			"--host",
+			"0.0.0.0",
+			"--port",
+			"53053"
+		],
+		"Image": "cdiff-denoiser-cold-diffusion-api",
+		"Volumes": null,
+		"WorkingDir": "/app",
+		"Entrypoint": null,
+		"OnBuild": null,
+		"Labels": {
+			"com.docker.compose.config-hash": "8b7f327cafd308bcfb8b3566ac78dad8a5f31223f4bbf4994a894c87e4bf790e",
+			"com.docker.compose.container-number": "1",
+			"com.docker.compose.depends_on": "",
+			"com.docker.compose.image": "sha256:afa36e314767c15fb5efff20628e43b99b07e9c8fefaf7cc9ff8beace72b58a7",
+			"com.docker.compose.oneoff": "False",
+			"com.docker.compose.project": "cdiff-denoiser",
+			"com.docker.compose.project.config_files": "/Users/davynreinhard/Downloads/cdiff-denoiser/docker-compose.yml",
+			"com.docker.compose.project.working_dir": "/Users/davynreinhard/Downloads/cdiff-denoiser",
+			"com.docker.compose.replace": "eab1ddfa7ec3254235615c707d3349e5147308f2293a4df038aba552843c60d7",
+			"com.docker.compose.service": "cold-diffusion-api",
+			"com.docker.compose.version": "2.23.0"
+		}
+	},
+	"NetworkSettings": {
+		"Bridge": "",
+		"SandboxID": "e72caff6bd1960eeae0917b1e229672542079a1c078030d9ecc622cd70fdaf69",
+		"HairpinMode": false,
+		"LinkLocalIPv6Address": "",
+		"LinkLocalIPv6PrefixLen": 0,
+		"Ports": {
+			"53053/tcp": [
+				{
+					"HostIp": "0.0.0.0",
+					"HostPort": "53053"
+				}
+			]
+		},
+		"SandboxKey": "/var/run/docker/netns/e72caff6bd19",
+		"SecondaryIPAddresses": null,
+		"SecondaryIPv6Addresses": null,
+		"EndpointID": "",
+		"Gateway": "",
+		"GlobalIPv6Address": "",
+		"GlobalIPv6PrefixLen": 0,
+		"IPAddress": "",
+		"IPPrefixLen": 0,
+		"IPv6Gateway": "",
+		"MacAddress": "",
+		"Networks": {
+			"cdiff-denoiser_default": {
+				"IPAMConfig": null,
+				"Links": null,
+				"Aliases": [
+					"cold-diffusion-api",
+					"cold-diffusion-api",
+					"3bbbf4fe06db"
+				],
+				"NetworkID": "fa08e8e581f7d13ccd11e331a78e29c7d832bd47afdcf6f643025bc313856f0f",
+				"EndpointID": "53091287c06c4547ca43b75f846fbaac36424ff7812149cdce3348c81913ad85",
+				"Gateway": "172.18.0.1",
+				"IPAddress": "172.18.0.2",
+				"IPPrefixLen": 16,
+				"IPv6Gateway": "",
+				"GlobalIPv6Address": "",
+				"GlobalIPv6PrefixLen": 0,
+				"MacAddress": "02:42:ac:12:00:02",
+				"DriverOpts": null
+			}
+		}
+	}
+}
