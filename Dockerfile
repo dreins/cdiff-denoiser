@@ -4,10 +4,7 @@ FROM python:3.9-slim-buster
 # Install system dependencies
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-    build-essential \
-    curl \
-    libssl-dev \
-    libffi-dev
+    build-essential
 
 # Copy the requirements.txt file into the container
 COPY requirements.txt /app/requirements.txt
