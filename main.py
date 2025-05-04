@@ -8,6 +8,7 @@ from app.utils.generate import generate
 import sys
 import logging
 from os import getenv
+import uvicorn
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -57,8 +58,7 @@ async def inference(input_data: InputDataWaveform):
     output = OutputDataWaveform(results=output_results)
     return output
 
-
-def run_cli():
+if __name__ == "__main__":
     T = int(getenv("T", 300))
     gpu = int(getenv("GPU", default=0))
     path_model = getenv("PATH_MODEL", default="~/cdiff-denoiser/models/model_best_4.pt")
@@ -66,9 +66,6 @@ def run_cli():
     # Simulating inference or training process with CLI args
     # (Can be adapted to include real logic)
     print(f"[CLI] Running with T={T}, GPU={gpu}, model={path_model}")
-
-    # Implement logic based on the CLI arguments (if necessary)
-    # e.g., load model and perform inference or training based on input data
-
-if __name__ == "__main__":
-    run_cli()
+    host = getenv("HOST", "0.0.0.0")
+    port = int(getenv("PORT", 53053))
+    uvicorn.run("main:app", host=host, port=port, reload=False)

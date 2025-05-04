@@ -18,4 +18,4 @@ RUN which pip
 RUN which uvicorn
 
 # Explicitly use the uvicorn executable.  This is the most robust approach.
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "53053"]
+CMD ["python3", "main.py"]
