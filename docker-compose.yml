@@ -4,7 +4,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-      platform: linux/amd64
     container_name: cold-diffusion-api
     ports:
       - "53053:53053"
