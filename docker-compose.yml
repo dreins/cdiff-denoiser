@@ -5,6 +5,9 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: cold-diffusion-api
+    networks:
+      cdiff-denoiser-network:
+        ipv4_address: 172.21.10.10
     ports:
       - "53053:53053"
     environment:
@@ -13,3 +16,7 @@ services:
       - RANGE_RNF=${RANGE_RNF}
       - MODEL_PATH=${MODEL_PATH}
     command: ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "53053"]
+
+networks:
+  cdiff-denoiser-network:
+    external: true
