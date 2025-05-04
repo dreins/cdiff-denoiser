@@ -68,4 +68,4 @@ if __name__ == "__main__":
     print(f"[CLI] Running with T={T}, GPU={gpu}, model={path_model}")
     host = getenv("HOST", "0.0.0.0")
     port = int(getenv("PORT", 53053))
-    uvicorn.run("main:app", host=host, port=port, reload=False)
+    uvicorn.run("app.main:app", host=host, port=port, reload=False)
