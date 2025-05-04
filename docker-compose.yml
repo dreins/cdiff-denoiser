@@ -15,7 +15,7 @@ services:
       - MODEL_PATH=${MODEL_PATH}
     networks:
       - nginx-manager_customnetwork
-    command: ["python3", "app/main.py"]
+    command: ["python3", "-m", "app.main"]
 
 networks:
   nginx-manager_customnetwork:

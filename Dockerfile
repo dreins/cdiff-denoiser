@@ -18,4 +18,4 @@ RUN which pip
 RUN which uvicorn
 
 # Explicitly use the uvicorn executable.  This is the most robust approach.
-CMD ["python3", "app/main.py"]
+CMD ["python3", "-m", "app.main"]
