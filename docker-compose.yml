@@ -15,7 +15,7 @@ services:
       - GPU=${GPU}
       - RANGE_RNF=${RANGE_RNF}
       - MODEL_PATH=${MODEL_PATH}
-    command: ["uvicorn", "app.test_main:app", "--host", "0.0.0.0", "--port", "53053"]
+    command: ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "53053"]
 
 networks:
   cdiff-denoiser-network:
