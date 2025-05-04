@@ -13,22 +13,26 @@ import numpy as np
 import pandas as pd
 from tqdm import tqdm
 import json
-import app.utils.settings as s
 from app.utils.load_models import load_model_and_weights
+from os import getenv
+from dotenv import load_dotenv
 
-
-old_args = s.configure_args()
-
+load_dotenv()
 
 # Function to generate output (main logic from your generate function)
-def generate(args, loader, noise_loader, index_to_trace_name, max_value_dict):
+def generate(loader, noise_loader, index_to_trace_name, max_value_dict):
+    T = int(getenv("T", 300))
+    gpu = int(getenv("GPU", default=0))
+    path_model = getenv("PATH_MODEL", default="~/cdiff-denoiser/models/model_best_4.pt")
+    Range_RNF = getenv("RANGE_RNF", default=(40, 65))
+    Range_RNF = tuple(map(int, Range_RNF.split(",")))
+
     device = torch.device(
-        f"cuda:{old_args.gpu}" if torch.cuda.is_available() else "cpu")
-    scheduler.initialize_parameters(old_args.T)
-    model = load_model_and_weights(old_args.path_model).to(device)
+        f"cuda:{gpu}" if torch.cuda.is_available() else "cpu")
+    scheduler.initialize_parameters(T)
+    model = load_model_and_weights(path_model).to(device)
 
     results = []
-    T = old_args.T
 
     with torch.no_grad():
         model.eval()
@@ -36,7 +40,7 @@ def generate(args, loader, noise_loader, index_to_trace_name, max_value_dict):
             try:
                 initial_eq_in = eq_in
                 eq_in = eq_in[1].to(device)
-                reduce_noise = random.randint(*old_args.Range_RNF) * 0.01
+                reduce_noise = random.randint(Range_RNF[0], Range_RNF[1]) * 0.01
                 noise_real = noise_in[1].to(device) * reduce_noise
                 signal_noisy = eq_in + noise_real
                 t = torch.tensor([T - 1]).long().to(device)
@@ -56,11 +60,8 @@ def generate(args, loader, noise_loader, index_to_trace_name, max_value_dict):
                 # Process each sample
                 for idx, trace_name in enumerate(trace_names):
                     # Multiply results by the max values
-                    print(max_value_dict)
                     max_value = max_value_dict.get(
                         trace_name, 1.0)  # Default to 1 if not found
-                    print(max_value)
-                    print(restored_sampling_batch[idx][0])
                     results.append({
                         "trace_name": trace_name,
                         "E_channel_denoised": (restored_sampling_batch[idx][0] * max_value).tolist(),

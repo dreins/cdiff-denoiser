@@ -1,11 +1,14 @@
+version: '3'
 services:
   cold-diffusion-api:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: cold-diffusion-api
     ports:
       - "53053:53053"
+    env_file:
+      - .env
     volumes:
-      - ./app:/app  # This ensures the code is up to date inside the container
-    environment:
-      - PYTHONUNBUFFERED=1  # Optional: prevent output buffering (useful for logs)
-    command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "53053"]
+      - .:/code  # Ensure the correct mapping to /code instead of /app
+    command: ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "53053"]

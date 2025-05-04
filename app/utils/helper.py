@@ -2,12 +2,12 @@ import numpy as np
 import pandas as pd
 import torch
 from torch.utils.data import DataLoader, TensorDataset
-import app.utils.settings as s
 import random
+from dotenv import load_dotenv
+from os import getenv
 
 
-args = s.configure_args()
-
+load_dotenv()
 
 def create_inference_dataloader(
     df,
@@ -39,29 +39,20 @@ def create_inference_dataloader(
 
     return loader, index_to_trace_name, max_value_dict
 
-
-def generate_mock_trace(length=6000):
-    return np.random.randn(length)
-
-
-def generate_noise(length=6000, noise_std=(args.Range_RNF)):
-    # Generate random trace data
-    noisy_trace = np.random.randn(*args.Range_RNF) * 0.01
-
-    return noisy_trace
-
-
 def generate_noise_dataframe(
     num_traces,
     length,
-    noise_std
 ):
+
+    Range_RNF = getenv("RANGE_RNF", default=(40, 65))
+    Range_RNF = tuple(map(int, Range_RNF.split(","))) 
+    
     data = []
     for i in range(num_traces):
         trace = {
-            'Z_channel': np.array([random.randint(args.Range_RNF[0], args.Range_RNF[1]) * 0.01 for _ in range(length)]),
-            'E_channel': np.array([random.randint(args.Range_RNF[0], args.Range_RNF[1]) * 0.01 for _ in range(length)]),
-            'N_channel': np.array([random.randint(args.Range_RNF[0], args.Range_RNF[1]) * 0.01 for _ in range(length)]),
+            'Z_channel': np.array([random.randint(Range_RNF[0], Range_RNF[1]) * 0.01 for _ in range(length)]),
+            'E_channel': np.array([random.randint(Range_RNF[0], Range_RNF[1]) * 0.01 for _ in range(length)]),
+            'N_channel': np.array([random.randint(Range_RNF[0], Range_RNF[1]) * 0.01 for _ in range(length)]),
             'trace_name': f"noise_trace_{i}"
         }
         data.append(trace)
@@ -89,29 +80,3 @@ def validate_trace_lengths(df, feature_columns=['E_channel', 'N_channel', 'Z_cha
             raise ValueError(
                 f"Trace '{row[trace_name_column]}' has length {current_length}, expected {expected_length}"
             )
-
-
-# Create mock dataset
-mock_data = [
-    {
-        "Z_channel": generate_mock_trace(),
-        "E_channel": generate_mock_trace(),
-        "N_channel": generate_mock_trace(),
-        "trace_name": "trace_001"
-    },
-    {
-        "Z_channel": generate_mock_trace(),
-        "E_channel": generate_mock_trace(),
-        "N_channel": generate_mock_trace(),
-        "trace_name": "trace_002"
-    }
-]
-
-df = pd.DataFrame(mock_data)
-
-# Run the function
-loader, mapping, max_values = create_inference_dataloader(df)
-
-# Check output
-print("Index to Trace Mapping:", mapping)
-print("Max Values for Normalization:", max_values)

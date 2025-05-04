@@ -17,9 +17,9 @@ class InputDataWaveform(BaseModel):
 # === OUTPUT STRUCTURE FOR INFERENCE ===
 class OutputTraceResult(BaseModel):
     trace_name: str
-    Z_channel_synthetic: List[float]
-    E_channel_synthetic: List[float]
-    N_channel_synthetic: List[float]
+    Z_channel_denoised: List[float]
+    E_channel_denoised: List[float]
+    N_channel_denoised: List[float]
 
 
 class OutputDataWaveform(BaseModel):
