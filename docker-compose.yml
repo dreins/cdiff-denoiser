@@ -8,9 +8,15 @@ services:
       - stack.env
     ports:
       - "53053:53053"
+    networks:
+      - cdiff-denoiser-network
     environment:
       - T=${T}
       - GPU=${GPU}
       - RANGE_RNF=${RANGE_RNF}
       - MODEL_PATH=${MODEL_PATH}
     command: ["uvicorn", "app.test_main:app", "--host", "0.0.0.0", "--port", "53053"]
+
+networks:
+  cdiff-denoiser-network:
+    external: true
